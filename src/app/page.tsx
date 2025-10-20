@@ -90,7 +90,7 @@ export default function Home() {
         transition={{ duration: 0.6, delay: 1.4, ease: "easeOut" }}
       >
         <div className="flex flex-col items-center gap-4">
-          <SocialSelector handle="hello_trader" />
+          <SocialSelector />
           
           {/* Mobile Juicy Labs branding */}
           <motion.div 

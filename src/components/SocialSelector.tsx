@@ -11,7 +11,6 @@ export type Platform = {
 
 type Props = {
   platforms?: Platform[];
-  handle?: string;
   selectedPlatform?: Platform;
   onChange?: (p: Platform) => void;
   className?: string;
@@ -19,7 +18,6 @@ type Props = {
 
 export default function SocialSelector({
   platforms: inputPlatforms,
-  handle = "hello_trader",
   selectedPlatform,
   onChange,
   className = "",
@@ -76,7 +74,11 @@ export default function SocialSelector({
   const active = selectedPlatform ?? internal;
 
   const setActive = (p: Platform) => {
-    onChange ? onChange(p) : setInternal(p);
+    if (onChange) {
+      onChange(p);
+    } else {
+      setInternal(p);
+    }
   };
 
   const handleClick = (url: string, title?: string) => {

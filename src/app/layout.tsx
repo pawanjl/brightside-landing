@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BrightSide",
-  description: "A product of Juicy Labs Ltd - Awesome features, Your control, 0% fees",
+  title: "Brightside",
+  description: "The only perp app you need",
   icons: {
     icon: '/favicon.png',
   },

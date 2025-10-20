@@ -19,8 +19,55 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+body { background: #ffffff; color: #171717; margin: 0; padding: 0; }
+
+/* Local font: Your Doodle Font */
+@font-face {
+  font-family: "YourDoodle";
+  src: url("../font/Your Doodle Font.ttf") format("truetype"),
+       url("../font/Your Doodle Font.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-your-doodle {
+  font-family: "YourDoodle", system-ui, -apple-system, sans-serif;
+}
+
+/* SF Pro Rounded Font */
+@font-face {
+  font-family: "SF Pro Rounded";
+  src: url("../font/SF-Pro-Rounded-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Rounded";
+  src: url("../font/SF-Pro-Rounded-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Rounded";
+  src: url("../font/SF-Pro-Rounded-Semibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Rounded";
+  src: url("../font/SF-Pro-Rounded-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-sf-pro-rounded {
+  font-family: "SF Pro Rounded", system-ui, -apple-system, sans-serif;
 }

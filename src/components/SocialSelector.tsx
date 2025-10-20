@@ -1,6 +1,6 @@
 "use client";
 import React, { useMemo, useState } from "react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export type Platform = {
   name: string;

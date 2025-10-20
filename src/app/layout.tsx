@@ -9,7 +9,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "BrightSide",
-  description: "A product of Juicy Labs Ltd - Awesome features, Your control, 0% fees",
+  description: "The Only Perp App You Need",
   icons: {
     icon: '/favicon.png',
   },

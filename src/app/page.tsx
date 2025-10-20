@@ -4,7 +4,7 @@ import SocialSelector from "@/components/SocialSelector";
 import { motion } from "framer-motion";
 
 export default function Home() {
-  const texts = ["awwwwwsome Features", "Your Control", "0% fees"];
+  const texts = ["200% awwwwwsome Features", "100% Your Control", "0% fees"];
 
   return (
     <motion.div 

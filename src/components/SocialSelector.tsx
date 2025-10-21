@@ -26,17 +26,17 @@ export default function SocialSelector({
     () => [
       {
         name: "X",
-        domain: "Updates on @brightSide",
+        domain: "Updates on~@brightsidegg",
         icon: (
           <svg width="20" height="20" viewBox="0 0 512 512" fill="currentColor">
             <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
           </svg>
         ),
-        url: "https://x.com/juicy_ag", // ✅ X (Twitter)
+        url: "https://x.com/brightsidegg", // ✅ X (Twitter)
       },
       {
         name: "Privacy Policy",
-        domain: "Read about Privacy Policy",
+        domain: "Read about~Privacy Policy",
         icon: (
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
           <path d="M14 18C14 17.4696 13.7893 16.9609 13.4142 16.5858C13.0391 16.2107 12.5304 16 12 16C11.4696 16 10.9609 16.2107 10.5858 16.5858C10.2107 16.9609 10 17.4696 10 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -50,7 +50,7 @@ export default function SocialSelector({
       },
       {
         name: "Terms & Conditions",
-        domain: "Read about Terms & Conditions",
+        domain: "Read about~Terms & Conditions",
         icon: (
 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
   <path d="M7 18V12C7 10.6739 7.52678 9.40215 8.46447 8.46447C9.40215 7.52678 10.6739 7 12 7C13.3261 7 14.5979 7.52678 15.5355 8.46447C16.4732 9.40215 17 10.6739 17 12V18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -150,11 +150,18 @@ export default function SocialSelector({
       <div className="text-base">
         <motion.button
           onClick={() => handleClick(active.url, active.name)}
-          className="font-semibold text-neutral-400 hover:underline cursor-pointer"
-          whileHover={{ scale: 1.05 }}
+          className="font-semibold text-neutral-400 cursor-pointer" 
           whileTap={{ scale: 0.95 }}
         >
-          {active.domain}
+          {active.domain.split('~').map((part, index) => (
+            <span key={index}>
+              {index === 1 ? (
+                <span> <span className="text-gray-600 underline underline-offset-3">{part}</span></span>
+              ) : (
+                part
+              )}
+            </span>
+          ))} 
         </motion.button>
       </div>
     </div>

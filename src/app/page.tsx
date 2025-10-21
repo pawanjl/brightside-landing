@@ -2,9 +2,10 @@
 import MorphingText from "@/components/MorphingText";
 import SocialSelector from "@/components/SocialSelector";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Home() {
-  const texts = ["200% awwwwwsome Features", "100% Your Control", "0% fees"];
+  const texts = ["200% awesome Features", "100% Your Control", "0% fees"];
 
   return (
     <motion.div 
@@ -34,6 +35,8 @@ export default function Home() {
             controls={false}
             controlsList="nodownload noplaybackrate noremoteplayback nofullscreen"
             disablePictureInPicture
+            preload="auto"
+            style={{ pointerEvents: 'none' }}
             className="w-full max-w-[280px] sm:max-w-[350px] rounded-lg"
           />
         </motion.div>
@@ -66,6 +69,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 1.2, ease: "easeOut" }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => window.open('https://forms.gle/VF5BjRiMdWb3LB7c8', '_blank')}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="group-hover:animate-spin transition-transform duration-500" style={{ animationDuration: '2s' }}>
               <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="#FF6401" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

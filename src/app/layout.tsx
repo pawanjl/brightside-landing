@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "BrightSide",
+  title: "Brightside",
   description: "The Only Perp App You Need",
   icons: {
     icon: '/favicon.png',

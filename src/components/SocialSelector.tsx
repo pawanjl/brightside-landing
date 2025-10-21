@@ -32,19 +32,13 @@ export default function SocialSelector({
             <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
           </svg>
         ),
-        url: "https://x.com/brightsidegg", // ✅ X (Twitter)
+        url: "https://x.com/brightsidegg",
       },
       {
         name: "Privacy Policy",
         domain: "Read about~Privacy Policy",
         icon: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
             <path
               d="M14 18C14 17.4696 13.7893 16.9609 13.4142 16.5858C13.0391 16.2107 12.5304 16 12 16C11.4696 16 10.9609 16.2107 10.5858 16.5858C10.2107 16.9609 10 17.4696 10 18"
               stroke="black"
@@ -59,13 +53,7 @@ export default function SocialSelector({
               strokeLinecap="round"
               strokeLinejoin="round"
             />
-            <path
-              d="M2 11H22"
-              stroke="black"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+            <path d="M2 11H22" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             <path
               d="M17 21C18.6569 21 20 19.6569 20 18C20 16.3431 18.6569 15 17 15C15.3431 15 14 16.3431 14 18C14 19.6569 15.3431 21 17 21Z"
               stroke="black"
@@ -82,19 +70,13 @@ export default function SocialSelector({
             />
           </svg>
         ),
-        url: "/privacy_policy.pdf", // ✅ Local PDF
+        url: "/privacy_policy.pdf",
       },
       {
         name: "Terms & Conditions",
         domain: "Read about~Terms & Conditions",
         icon: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
             <path
               d="M7 18V12C7 10.6739 7.52678 9.40215 8.46447 8.46447C9.40215 7.52678 10.6739 7 12 7C13.3261 7 14.5979 7.52678 15.5355 8.46447C16.4732 9.40215 17 10.6739 17 12V18"
               stroke="black"
@@ -109,51 +91,9 @@ export default function SocialSelector({
               strokeLinecap="round"
               strokeLinejoin="round"
             />
-            <path
-              d="M21 12H22"
-              stroke="black"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M18.5 4.5L18 5"
-              stroke="black"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M2 12H3"
-              stroke="black"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M12 2V3"
-              stroke="black"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M4.92902 4.92896L5.63602 5.63596"
-              stroke="black"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M12 12V18"
-              stroke="black"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
           </svg>
         ),
-        url: "/tc.pdf", // ✅ Local PDF
+        url: "/tc.pdf",
       },
     ],
     []
@@ -166,17 +106,25 @@ export default function SocialSelector({
   const active = selectedPlatform ?? internal;
 
   const setActive = (p: Platform) => {
-    if (onChange) {
-      onChange(p);
-    } else {
-      setInternal(p);
-    }
+    if (onChange) onChange(p);
+    else setInternal(p);
   };
 
-  // ✅ Fixed: open PDFs in browser, others can download
+  // ✅ Updated: PDFs open with custom tab title
   const handleClick = (url: string, title?: string) => {
     if (url.endsWith(".pdf")) {
-      window.open(url, "_blank", "noopener,noreferrer");
+      const html = `
+        <html>
+          <head>
+            <title>${title || "Document"} | Brightside</title>
+          </head>
+          <body style="margin:0;padding:0;overflow:hidden">
+            <iframe src="${url}" style="width:100vw;height:100vh;border:none;"></iframe>
+          </body>
+        </html>`;
+      const blob = new Blob([html], { type: "text/html" });
+      const blobUrl = URL.createObjectURL(blob);
+      window.open(blobUrl, "_blank", "noopener,noreferrer");
       return;
     }
 
@@ -184,9 +132,7 @@ export default function SocialSelector({
     link.href = url;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
-    if (title) {
-      link.download = title;
-    }
+    if (title) link.download = title;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
